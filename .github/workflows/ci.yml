@@ -1,0 +1,40 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  run:
+    runs-on: [Gea1]
+    timeout-minutes: 20
+
+    container:
+      image: ghcr.io/gradiant/ai-dataset-template/dataset_template_ci:latest
+      credentials:
+        username: gradiant
+        password: ${{ secrets.GITHUB_TOKEN }}
+      volumes:
+        - /media/VA:/media/VA
+        - /media/BM:/media/BM
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Lint code
+        run: |
+          export SKIP=dvc-pre-commit,dvc-post-checkout
+          pre-commit install
+          pre-commit run --all-files
+
+      - name: DVC Checkout
+        run: dvc checkout
+
+      - name: Install package
+        run: python setup.py develop
+
+      - name: Test with pytest
+        shell: bash -l {0}
+        run: pytest tests

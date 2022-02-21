@@ -1,0 +1,16 @@
+name: SIGNATURE_SUPERDATABASE
+channels:
+  - anaconda
+dependencies:
+  - python=3.9
+  - numpy
+  - pydantic
+  - pytest
+  - pip:
+      - cruft==2.9.0
+      - dvc==2.7.4
+      - fire==0.4.0
+      - loguru==0.5.3
+      - cookiecutter==1.7.3
+      - mmpycocotools
+      - pre-commit

@@ -1,0 +1,17 @@
+{
+  "template": "git@github.com:Gradiant/ai-dataset-template.git",
+  "commit": "96e09958dc91348757e06d160098bb74eba5a71f",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "dataset_name": "SIGNATURE_SUPERDATABASE",
+      "dataset_slug": "SIGNATURE_SUPERDATABASE",
+      "task": "classification",
+      "_copy_without_render": [
+        ".github/workflows/*"
+      ],
+      "_template": "git@github.com:Gradiant/ai-dataset-template.git"
+    }
+  },
+  "directory": null
+}

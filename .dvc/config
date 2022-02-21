@@ -1,0 +1,8 @@
+[cache]
+    type = "reflink,symlink,hardlink,copy"
+    shared = group
+    dir = /media/VA/DVC/ai-datasets/SIGNATURE_SUPERDATABASE
+['remote "local-remote"']
+    url = /media/VA/DVC_remote/ai-datasets/SIGNATURE_SUPERDATABASE
+[core]
+    remote = local-remote
