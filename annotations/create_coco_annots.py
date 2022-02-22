@@ -118,7 +118,7 @@ def create_coco_annots(
     signature_names_file: str,
     output_annots_file: str,
 ) -> None:
-    """Split based on matching each image's `property_name` with `pattern_to_match`.
+    """Create annotations in COCO format for the signature superdatabase.
     Args:
         files_dir:
             Directory with the images
