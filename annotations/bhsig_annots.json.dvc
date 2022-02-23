@@ -1,0 +1,4 @@
+outs:
+- md5: 93e3c8eab1da2354b475e8564849dfa6
+  size: 2260731
+  path: bhsig_annots.json
