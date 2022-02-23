@@ -8,20 +8,29 @@ from loguru import logger
 from PIL import Image
 import os
 from tqdm import tqdm
+import create_cedar_annot
+from create_mcyt75_annot import create_mcyt_annots
+from create_utsig_annot import create_utsig_annots
+from create_cedar_annot import create_cedar_annots
+
 
 
 @logger.catch(reraise=True)  # noqa: C901
-def create_cedar_annots(
+def create_single_db_annot(
     superdatabase_coco_annots_file: str,
+    db_name: str,
     output_annots_file: str,
 ) -> None:
-    """Split CEDAR database annots.
+    """Split UTSIG database annots.
     Args:
         superdatabase_coco_annots_file:
             Json file in COCO format with annotations of superdatabase
+        db_name:
+            Name of the single database. Possible options: CEDAR, MCYT, UTSIG.
         output_annots_file:
-            File where COCO annotation will be saved for CEDAR database.
+            File where COCO annotation will be saved for UTSIG database.
     """
+
     Path(output_annots_file).parent.mkdir(parents=True, exist_ok=True)
 
     logger.info(f"Loading ids data from {superdatabase_coco_annots_file} ...")
@@ -39,7 +48,7 @@ def create_cedar_annots(
     count_categories = 0
     for cat in annots["categories"]:
 
-        if 'CEDAR' in cat["name"]:
+        if db_name in cat["name"]:
             categories.append(cat)
             list_cat_ids.append(cat['id'])
             count_categories+=1
@@ -61,8 +70,9 @@ def create_cedar_annots(
     with open(output_annots_file, "w") as f:
         json.dump(coco_annots, f, indent=2)
     logger.info("Done!")
+    
 
 
 if __name__ == "__main__":
-    fire.Fire(create_cedar_annots)
-    #example: python annotations/create_cedar_annot.py annotations/coco_annots.json annotations/cedar_annots.json
+    fire.Fire(create_single_db_annot)
+    #example: python annotations/create_single_db_annot.py annotations/coco_annots.json MCYT annotations/mcyt_annots.json
