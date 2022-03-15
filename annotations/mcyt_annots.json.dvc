@@ -1,0 +1,4 @@
+outs:
+- md5: 148c2d99f886cf558230b4f956da7ddc
+  size: 364272
+  path: mcyt_annots.json
