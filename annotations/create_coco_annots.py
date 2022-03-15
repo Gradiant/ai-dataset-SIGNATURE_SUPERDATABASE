@@ -153,7 +153,13 @@ def create_coco_annots(
         entry["supercategory"] = "user"
         categories.append(entry)
 
+    categories2 = [
+        {"id": 0, "name": "Genuine", "supercategory": "spoof"},
+        {"id": 1, "name": "Forgery", "supercategory": "spoof"},
+    ]
+
     coco_annots["categories"] = categories
+    coco_annots["categories2"] = categories2
 
     id = 0
     logger.info("Adding images information")
@@ -169,6 +175,7 @@ def create_coco_annots(
         entry["width"] = w
         entry["height"] = h
         entry["file_name"]=k
+        
         ##check the correct category
         dbs = ['cedar', 'mcyt75', 'utsig', 'utsigFor', 'bhsig', 'icdar2009train', 'icdar2009test', 'icdar2011train', 'icdar2011test', '4nsig10', '4nsig12']
         id_found = False
