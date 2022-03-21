@@ -1,0 +1,4 @@
+outs:
+- md5: d964a53464ebbdc00afd852d5570830d
+  size: 120340
+  path: icfhr_annots.json

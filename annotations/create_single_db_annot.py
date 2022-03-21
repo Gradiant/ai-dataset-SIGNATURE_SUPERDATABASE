@@ -8,11 +8,6 @@ from loguru import logger
 from PIL import Image
 import os
 from tqdm import tqdm
-import create_cedar_annot
-from create_mcyt75_annot import create_mcyt_annots
-from create_utsig_annot import create_utsig_annots
-from create_cedar_annot import create_cedar_annots
-
 
 
 @logger.catch(reraise=True)  # noqa: C901
@@ -21,12 +16,12 @@ def create_single_db_annot(
     db_name: str,
     output_annots_file: str,
 ) -> None:
-    """Split UTSIG database annots.
+    """Split single databases annots.
     Args:
         superdatabase_coco_annots_file:
             Json file in COCO format with annotations of superdatabase
         db_name:
-            Name of the single database. Possible options: CEDAR, MCYT, UTSIG.
+            Name of the single database. Possible options: CEDAR, MCYT, UTSIG, BHSIG, ICDAR09, ICDAR11 ICFHR
         output_annots_file:
             File where COCO annotation will be saved for UTSIG database.
     """
@@ -41,7 +36,6 @@ def create_single_db_annot(
     coco_annots = {}
     images = []
     categories  =[]
-
     list_cat_ids = []
 
     logger.info("Split categories information....")

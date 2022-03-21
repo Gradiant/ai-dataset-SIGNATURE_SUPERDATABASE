@@ -1,0 +1,4 @@
+outs:
+- md5: 88097047c2ca0744a01f1fba2bba8d57
+  size: 564166
+  path: icdar11_annots.json
