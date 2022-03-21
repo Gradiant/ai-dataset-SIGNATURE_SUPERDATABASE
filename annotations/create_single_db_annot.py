@@ -8,12 +8,6 @@ from loguru import logger
 from PIL import Image
 import os
 from tqdm import tqdm
-import create_cedar_annot
-from create_mcyt75_annot import create_mcyt_annots
-from create_utsig_annot import create_utsig_annots
-from create_cedar_annot import create_cedar_annots
-
-
 
 @logger.catch(reraise=True)  # noqa: C901
 def create_single_db_annot(
