@@ -15,12 +15,12 @@ def create_single_db_annot(
     db_name: str,
     output_annots_file: str,
 ) -> None:
-    """Split UTSIG database annots.
+    """Split single databases annots.
     Args:
         superdatabase_coco_annots_file:
             Json file in COCO format with annotations of superdatabase
         db_name:
-            Name of the single database. Possible options: CEDAR, MCYT, UTSIG.
+            Name of the single database. Possible options: CEDAR, MCYT, UTSIG, BHSIG, ICDAR09, ICDAR11 ICFHR
         output_annots_file:
             File where COCO annotation will be saved for UTSIG database.
     """
@@ -35,7 +35,6 @@ def create_single_db_annot(
     coco_annots = {}
     images = []
     categories  =[]
-
     list_cat_ids = []
 
     logger.info("Split categories information....")
