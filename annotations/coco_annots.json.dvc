@@ -1,4 +1,4 @@
 outs:
-- md5: 88fcd6b82d4bb0c0d0425af7a43daa69
-  size: 5576998
+- md5: cef3c92f026d22a907b6491e8cc52fa9
+  size: 5577189
   path: coco_annots.json

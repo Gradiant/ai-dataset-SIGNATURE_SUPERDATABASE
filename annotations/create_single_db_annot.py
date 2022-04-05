@@ -9,7 +9,6 @@ from PIL import Image
 import os
 from tqdm import tqdm
 
-
 @logger.catch(reraise=True)  # noqa: C901
 def create_single_db_annot(
     superdatabase_coco_annots_file: str,
@@ -57,7 +56,14 @@ def create_single_db_annot(
 
     logger.info(f'Added {count_images} images of {len(annots["images"])}')
 
+    categories2 = [
+        {"id": 0, "name": "Genuine", "supercategory": "spoof"},
+        {"id": 1, "name": "Forgery", "supercategory": "spoof"},
+    ]
+
     coco_annots["categories"] = categories
+    coco_annots["categories2"] = categories2
+    
     coco_annots["images"] = images
 
     logger.info(f"Writing {output_annots_file}...")
